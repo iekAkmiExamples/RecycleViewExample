@@ -1,6 +1,9 @@
 package com.example.recycleviewwithapi.models;
 
-public class University {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class University implements Parcelable {
     private String country;
     private String name;
     private String[] domains;
@@ -18,6 +21,16 @@ public class University {
         this.countryCode = countryCode;
         this.state = state;
         this.webpages = webpages;
+    }
+
+    protected University(Parcel in) {
+        country = in.readString();
+        name = in.readString();
+        domains = in.createStringArray();
+        countryCode = in.readString();
+        state = in.readString();
+        imageUri = in.readString();
+        webpages = in.createStringArray();
     }
 
     public String getCountry() {
@@ -75,4 +88,32 @@ public class University {
     public void setWebpages(String[] webpages) {
         this.webpages = webpages;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(country);
+        parcel.writeString(name);
+        parcel.writeStringArray(domains);
+        parcel.writeString(countryCode);
+        parcel.writeString(state);
+        parcel.writeString(imageUri);
+        parcel.writeStringArray(webpages);
+    }
+
+    public static final Creator<University> CREATOR = new Creator<University>() {
+        @Override
+        public University createFromParcel(Parcel in) {
+            return new University(in);
+        }
+
+        @Override
+        public University[] newArray(int size) {
+            return new University[size];
+        }
+    };
 }
