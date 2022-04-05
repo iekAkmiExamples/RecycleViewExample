@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         universities.add(
                 new University(
                         "Greece", "Hellenic Open University 1",
-                        new String[]{"http://www.eap.gr/"}, "GR", null, new String[]{"http://www.eap.gr/"}));
+                        new String[]{"http://www.eap.gr/","http://www.eap.gr/"}, "GR", null, new String[]{"http://www.eap.gr/"}));
         universities.add(
                 new University(
                         "Greece", "Hellenic Open University 2",
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         universities.add(
                 new University(
                         "Greece", "Hellenic Open University 3",
-                        new String[]{"http://www.eap.gr/"}, "GR", null, new String[]{"http://www.eap.gr/"}));
+                        new String[]{"http://www.eap.gr/"}, "GR", null, new String[]{"http://www.eap.gr/","http://www.eap.gr/","http://www.eap.gr/","http://www.eap.gr/"}));
         universities.add(
                 new University(
                         "Greece", "Hellenic Open University 4",
@@ -48,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
         this.recyclerView.setAdapter(adapter);
 
         //linear layout for regular list
-//        this.recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        this.recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         //grid layout to make a grid style list
-        this.recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+//        this.recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
     }
 }

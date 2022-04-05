@@ -1,6 +1,8 @@
 package com.example.recycleviewwithapi;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -12,13 +14,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.recycleviewwithapi.adapter.DomainRecycleViewAdapter;
+import com.example.recycleviewwithapi.adapter.RecycleViewAdapter;
 import com.example.recycleviewwithapi.models.University;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class Details extends AppCompatActivity {
 
     TextView uniName, uniCountry, uniState, uniCode;
     ImageView image;
     Button domainButton;
+    RecyclerView domainsRecyclerView, websitesRecyclerView;
     University university;
 
     @Override
@@ -34,17 +43,32 @@ public class Details extends AppCompatActivity {
         this.image = findViewById(R.id.uniImage);
         //buttons
         this.domainButton = findViewById(R.id.domainButton);
+        //recycle View
+        this.domainsRecyclerView = findViewById(R.id.domainsList);
+        this.websitesRecyclerView = findViewById(R.id.websitesList);
         //data from previous view
         this.university = getIntent().getExtras().getParcelable("university");
         //set values
         this.uniName.setText(this.university.getName());
         this.uniCountry.setText(this.university.getCountry());
-        this.uniState.setText(this.university.getState());
+        this.uniState.setText(this.university.getState()==null ? "-" : this.university.getState());
         this.uniCode.setText(this.university.getCountryCode());
         Glide.with(this)
                 .asBitmap()
                 .load(this.university.getImageUri())
                 .into(this.image);
+
+        //setup recycle view
+        DomainRecycleViewAdapter domainsAdapter = new DomainRecycleViewAdapter(this);
+        domainsAdapter.setDomains(university.getDomains());
+
+        DomainRecycleViewAdapter websitesAdapter = new DomainRecycleViewAdapter(this);
+        websitesAdapter.setDomains(university.getWebpages());
+
+        this.domainsRecyclerView.setAdapter(domainsAdapter);
+        this.domainsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        this.websitesRecyclerView.setAdapter(websitesAdapter);
+        this.websitesRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
 
         //action listeners
         if (university.getDomains().length > 0) {

@@ -17,7 +17,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/detailsContainer"
-        android:layout_width="wrap_content"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/uniImage"
         android:layout_centerHorizontal="true"
@@ -35,7 +35,7 @@
                 android:id="@+id/nameContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                android:padding="8dp">
 
                 <TextView
                     android:id="@+id/nameTitle"
@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/nameContainer"
-                android:padding="10dp">
+                android:padding="8dp">
 
                 <TextView
                     android:id="@+id/countryTitle"
@@ -79,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/countryContainer"
-                android:padding="10dp">
+                android:padding="8dp">
 
                 <TextView
                     android:id="@+id/stateTitle"
@@ -101,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/sateContainer"
-                android:padding="10dp">
+                android:padding="8dp">
 
                 <TextView
                     android:id="@+id/codeTitle"
@@ -117,6 +117,49 @@
                     android:layout_toRightOf="@+id/codeTitle"
                     android:text="state Name" />
             </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/domainsContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/codeContainer"
+                android:padding="8dp"
+                >
+                <TextView
+                    android:id="@+id/domainsTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Domains:"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/domainsList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_below="@+id/domainsTitle"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerHorizontal="true"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/websitesContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/domainsContainer"
+                android:padding="8dp"
+                >
+                <TextView
+                    android:id="@+id/websitesTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Websites:"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/websitesList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_below="@+id/websitesTitle"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerHorizontal="true"
+                    />
+            </RelativeLayout>
+
         </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>

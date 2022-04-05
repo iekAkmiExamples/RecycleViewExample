@@ -3,6 +3,7 @@ package com.example.recycleviewwithapi.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,23 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtName.setText(universities.get(position).getName());
         holder.txtCountry.setText(universities.get(position).getCountry());
+        holder.txtState.setText(universities.get(position).getState() == null ? "-" : universities.get(position).getState());
+        holder.downArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TransitionManager.beginDelayedTransition(holder.parent);
+                holder.collapsableMenu.setVisibility(View.VISIBLE);
+                holder.downArrow.setVisibility(View.GONE);
+            }
+        });
+        holder.upArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                TransitionManager.beginDelayedTransition(holder.parent);
+                holder.collapsableMenu.setVisibility(View.GONE);
+                holder.downArrow.setVisibility(View.VISIBLE);
+            }
+        });
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,15 +98,20 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     //responsible for generating the view objects
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView txtName,txtCountry;
-        private ImageView image;
+        private TextView txtName,txtCountry,txtState;
+        private ImageView image,downArrow, upArrow;
         private MaterialCardView parent;
+        private RelativeLayout collapsableMenu;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.parent = itemView.findViewById(R.id.itemParent);
             this.txtCountry = itemView.findViewById(R.id.txtCountry);
+            this.txtState = itemView.findViewById(R.id.txtState);
             this.txtName = itemView.findViewById(R.id.txtName);
             this.image = itemView.findViewById(R.id.image);
+            this.downArrow = itemView.findViewById(R.id.openMenuButton);
+            this.upArrow = itemView.findViewById(R.id.upArrow);
+            this.collapsableMenu = itemView.findViewById(R.id.collapsableLayout);
         }
     }
 
