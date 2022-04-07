@@ -19,12 +19,12 @@ domain.
 
 ```
 cd to_your_directory
-git clone https://github.com/iekAkmiExamples/ListViewExample.git
+git clone https://github.com/iekAkmiExamples/RecycleViewExample.git
 ```
 
 ### Clone from terminal (ssh)
 
 ```
 cd to_your_directory
-git clone git@github.com:iekAkmiExamples/ListViewExample.git
+git clone git@github.com:iekAkmiExamples/RecycleViewExample.git
 ```
