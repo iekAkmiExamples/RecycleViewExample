@@ -12,8 +12,6 @@ public class University implements Parcelable {
     private String imageUri = "https://yt3.ggpht.com/URas7CAnhru6m1BybojRtF2tcLE4fKEHn4aTFIf0Mppuizu3Xoi0-NIIMkeczAREjGdU28tQ=s900-c-k-c0x00ffffff-no-rj";
     private String[] webpages;
 
-//    public University() { }
-
     public University(String country, String name, String[] domains, String countryCode, String state, String[] webpages) {
         this.country = country;
         this.name = name;

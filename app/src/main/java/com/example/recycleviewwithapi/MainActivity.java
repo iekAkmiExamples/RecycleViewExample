@@ -49,8 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         //linear layout for regular list
         this.recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-        //grid layout to make a grid style list
-//        this.recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+
 
     }
 }
